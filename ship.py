@@ -1,3 +1,23 @@
+# Eugene Cook
+# April 6, 2025
+# Alien Invasion Game Ship
+
+"""
+    ship.py
+
+    This module contains the functions to create a ship object
+
+    Returns:
+        Object: A ship object that can move vertically and fire ammo 
+                horizontally
+
+    Modules:
+        - pygame
+        - typing
+        - alien_invasion
+        - arsenal
+"""
+
 import pygame
 from typing import TYPE_CHECKING
 
@@ -6,8 +26,26 @@ if TYPE_CHECKING:
     from arsenal import Arsenal
 
 class Ship:
+    """A class representing a single ship
+
+        Attributes:
+        Game: Instance of AlienInvasion
+        Arsenal: Group of ammo that can be fired
+
+        Methods:
+        update(): update ship movement and arsenal
+        draw(): draw ship and fired ammo
+        fire(): shoot ammo from arsenal
+
+    """
 
     def __init__(self, game: 'AlienInvasion', arsenal: "Arsenal") -> None:
+        """Initializes the ship object with a game and arsenal
+
+        Args:
+            game (AlienInvasion): _description_
+            arsenal (Arsenal): Group of ammo to be fired from ship
+        """
         self.game = game
         self.settings = game.settings
         self.screen = game.screen
@@ -23,18 +61,22 @@ class Ship:
         self.rect = self.image.get_rect()
         # Changed ship rect location
         self.rect.midleft = self.boundaries.midleft
-        # Changed ship movement directions
+        # Changed ship movement direction
         self.moving_up = False
         self.moving_down = False
         self.y = float(self.rect.y)
         self.arsenal = arsenal
 
     def update(self) -> None:
-    # Update position of the ship
+        """Update ship's movement and arsenal's ammo
+        """
         self._update_ship_movement()
         self.arsenal.update_arsenal()
 
-    def _update_ship_movement(self):
+    def _update_ship_movement(self) -> None:
+        """Update ships movement
+        """
+        # Changed movement from x axis to y axis
         temp_speed = self.settings.ship_speed
         if self.moving_up and self.rect.top > self.boundaries.top:
             self.y -= temp_speed
@@ -45,8 +87,15 @@ class Ship:
 
 
     def draw(self) -> None:
+        """Draw ship and fired ammo
+        """
         self.arsenal.draw()
         self.screen.blit(self.image, self.rect)
 
     def fire(self) -> bool:
+        """Fire ammo from arsenal
+
+        Returns:
+            bool: Was ammo fired
+        """
         return self.arsenal.fire_bullet()

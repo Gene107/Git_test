@@ -1,5 +1,21 @@
+# Eugene Cook
+# April 6, 2025
+# Alien Invasion Game Settings
+
+"""
+    settings.py
+
+    This module contains the setting attributes for objects in the 
+    Alien Invasion game
+
+    Modules:
+        - pathlib
+"""
+
 from pathlib import Path
 class Settings:
+    """A class representing the settings for objects  
+    """
     
     def __init__(self) -> None:
         self.name: str = 'Alien Invasion'
