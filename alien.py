@@ -21,6 +21,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from alien_invasion import AlienInvasion
+    from alien_fleet import AlienFleet
 
 class Alien(Sprite):
     """A class representing a single alien
@@ -37,7 +38,7 @@ class Alien(Sprite):
     update(): update location of alien
     draw_bullet(): draw alien to the screen
     """
-    def __init__(self, game: 'AlienInvasion', x: float, y: float) -> None:
+    def __init__(self, fleet: 'AlienFleet', x: float, y: float) -> None:
         """Initialize alien with a game
 
         Args:
@@ -46,9 +47,9 @@ class Alien(Sprite):
             y: y:axis
         """
         super().__init__()
-        self.screen = game.screen
-        self.boundaries = self.screen.get_rect()
-        self.settings = game.settings
+        self.screen = fleet.game.screen
+        self.boundaries = fleet.game.screen.get_rect()
+        self.settings = fleet.game.settings
 
         self.image = pygame.image.load(self.settings.alien_file)
         self.image = pygame.transform.scale(
