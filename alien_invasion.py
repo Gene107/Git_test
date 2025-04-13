@@ -1,5 +1,5 @@
 # Eugene Cook
-# April 12, 2025
+# April 13, 2025
 # Alien Invasion Game
 
 """
@@ -11,9 +11,11 @@
         - sys
         - pygame
         - settings
+        - game_stats
         - ship
         - arsenal
-        - alien
+        - alien_fleet
+        - time
 """
 
 import sys
