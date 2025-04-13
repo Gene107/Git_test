@@ -92,3 +92,7 @@ class AlienFleet:
         alien:'Alien'
         for alien in self.fleet:
             alien.draw_alien()
+
+    def check_collisions(self, other_group)-> None:
+        return pygame.sprite.groupcollide(self.fleet, other_group, True, True)
+    
