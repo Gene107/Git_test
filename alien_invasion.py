@@ -66,8 +66,20 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self.alien_fleet.update_fleet()
+            self._check_collisions()
             self._update_screen()
             self.clock.tick(self.settings.FPS)
+
+    def _check_collisions(self)-> None:
+        # Check collisions for ship:
+        if self.ship.check_collisions(self.alien_fleet.fleet):
+            self._reset_level()
+
+
+    def _reset_level(self)-> None:
+        self.ship.arsenal.arsenal.empty()
+        self.alien_fleet.fleet.empty()
+        self.alien_fleet.create_fleet()
 
     def _update_screen(self):
         """Update then draw background and ship to screen
