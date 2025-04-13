@@ -59,13 +59,16 @@ class Ship:
             self.image, 270)
         
         self.rect = self.image.get_rect()
-        # Changed ship rect location
-        self.rect.midleft = self.boundaries.midleft
+        self._center_ship()
         # Changed ship movement direction
         self.moving_up = False
         self.moving_down = False
-        self.y = float(self.rect.y)
         self.arsenal = arsenal
+
+    def _center_ship(self):
+        # Changed ship rect location
+        self.rect.midleft = self.boundaries.midleft
+        self.y = float(self.rect.y)
 
     def update(self) -> None:
         """Update ship's movement and arsenal's ammo
