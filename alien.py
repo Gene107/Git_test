@@ -47,6 +47,7 @@ class Alien(Sprite):
             y: y:axis
         """
         super().__init__()
+        self.fleet = fleet
         self.screen = fleet.game.screen
         self.boundaries = fleet.game.screen.get_rect()
         self.settings = fleet.game.settings
@@ -72,11 +73,7 @@ class Alien(Sprite):
         """
         temp_speed = self.settings.fleet_speed
 
-        if self.check_edges():
-            self.settings.fleet_direction *= -1
-            self.x -= self.settings.fleet_drop_speed
-
-        self.y -= temp_speed * self.settings.fleet_direction
+        self.y -= temp_speed * self.fleet.fleet_direction
         self.rect.y = self.y
         self.rect.x = self.x
 
