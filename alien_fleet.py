@@ -102,3 +102,6 @@ class AlienFleet:
             if alien.rect.left <= 0:
                 return True
         return False
+    
+    def check_destroyed_status(self)-> None:
+        return not self.fleet
