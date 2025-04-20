@@ -52,13 +52,14 @@ class Settings:
         self.ship_speed = 5
         self.starting_ship_count = 3
 
-        self.bullet_w = 25
+        self.bullet_w = self.screen_w
         self.bullet_h = 80
         self.bullet_speed = 7
         self.bullet_amount = 5
             
         self.fleet_speed = 1
         self.fleet_drop_speed = 40
+        self.alien_points = 50
 
     def increase_difficulty(self)-> None:
         self.ship_speed *= self.difficulty_scale
